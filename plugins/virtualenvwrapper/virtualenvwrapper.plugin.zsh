@@ -12,7 +12,7 @@ if (( $+commands[$virtualenvwrapper] )); then
             # Check if this is a Git repo
             PROJECT_ROOT=`git rev-parse --show-toplevel 2> /dev/null`
             if (( $? != 0 )); then
-                PROJECT_ROOT="."
+                PROJECT_ROOT="$PWD"
             fi
             # Check for virtualenv name override
             if [[ -f "$PROJECT_ROOT/.venv" ]]; then
