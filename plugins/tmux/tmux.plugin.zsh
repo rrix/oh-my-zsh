@@ -65,7 +65,7 @@ if which tmux &> /dev/null
 		# Try to connect to an existing session.
 		elif [[ "$ZSH_TMUX_AUTOCONNECT" == "true" ]]
 		then
-			\tmux `[[ "$ZSH_TMUX_ITERM2" == "true" ]] && echo '-CC '` attach || \tmux `[[ "$ZSH_TMUX_ITERM2" == "true" ]] && echo '-CC '` `[[ "$ZSH_TMUX_FIXTERM" == "true" ]] && echo '-f '$_ZSH_TMUX_FIXED_CONFIG` new-session
+			\tmux `[[ "$ZSH_TMUX_ITERM2" == "true" ]] && echo '-CC '` new-window && \tmux `[[ "$ZSH_TMUX_ITERM2" == "true" ]] && echo '-CC '` new-session -t 0 -s $(date +%s) || \tmux `[[ "$ZSH_TMUX_ITERM2" == "true" ]] && echo '-CC '` `[[ "$ZSH_TMUX_FIXTERM" == "true" ]] && echo '-f '$_ZSH_TMUX_FIXED_CONFIG` new-session
 			[[ "$ZSH_TMUX_AUTOQUIT" == "true" ]] && exit
 		# Just run tmux, fixing the TERM variable if requested.
 		else
